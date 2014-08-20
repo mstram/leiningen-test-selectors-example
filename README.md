@@ -1,10 +1,12 @@
 leiningen-test-selectors-example
 ================================
 
+```clojure
    lein new app t1
-
+```
  test/t1/core_test.clj
  
+ ```clojure
    (deftest ^:integration network-heavy-test
        (is (= [1 2 3] (:numbers (network-operation)))))
                        
