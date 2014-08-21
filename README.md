@@ -52,5 +52,17 @@ leiningen-test-selectors-example
   lein test                ;runs all tests
   
   lein test :integration   ; runs only tests tagged with ^:integration
+  
+```
+From lein repl
+==============
 
 ```
+  lein repl
+  
+ (require '[clojure.test :refer [run-tests]])
+ (require 't1.core-test)
+ (run-tests 't1.core-test)
+ 
+ 
+
