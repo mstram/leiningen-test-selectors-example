@@ -6,13 +6,31 @@ leiningen-test-selectors-example
 ```
  test/t1/core_test.clj
  
+ 
  ```clojure
-   (deftest ^:integration network-heavy-test
-       (is (= [1 2 3] (:numbers (network-operation)))))
+ 
+ (ns a1.core-test
+  (:require [clojure.test :refer :all]
+            [a1.core :refer :all]))
+
+
+(defn network-operation []
+ (prn "(network-operation)")
+ {:numbers [1 2 3] :extras "whatever"})
+ 
+ 
+ (deftest ^:integration network-heavy-test
+     (is (= [1 2 3] (:numbers (network-operation)))))
                        
-   (deftest ^:integration network-medium-test
+ (deftest ^:integration network-medium-test
        (is (= [4 5 6] (:numbers (network-operation)))))
-       
+ 
+ (deftest ^:integration network-heavy-test2
+  (prn "network-heavy-test2")
+   (let [ x  (:numbers (network-operation2) )]
+       (prn "x: " x  " (type x) : " (type x))
+       (prn "(x 0) " (x 0) )))
+
     ;;
     ;; these are ignored by  `lein test :integration`
     ;;
